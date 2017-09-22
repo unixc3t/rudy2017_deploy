@@ -1,0 +1,22 @@
+<ul id="commnets-list">
+  <% @comments.each do |comment| %>
+      <li>
+        <%= comment.nick %>:
+        <%= comment.text %>
+      </li>
+  <% end %>
+</ul>
+
+<ul class="comment-errors">
+  <% if @comment.present? && @comment.errors.present? %>
+      <% @comment.errors.messages.each do |field, message| %>
+          <li> <%= field %> : <%= message %></li>
+      <% end %>
+  <% end %>
+</ul>
+
+<%= form_for [@product, @product.comments.build], remote: true do |f| %>
+    <%= f.text_field :nick, placeholder: 'Nick' %> <br>
+    <%= f.text_area :text, placeholder: 'Message' %> <br>
+    <%= f.submit %>
+<% end %>
