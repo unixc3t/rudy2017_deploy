@@ -1,5 +1,8 @@
 {
   "name": "shop",
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+  "engines": {
+    "node": "8.5.0"
+  }
 }
