@@ -1,7 +1,7 @@
 $(function () {
 
   $('form#new_comment').on('ajax:success', function (event, response, status) {
-    let $form = $(event.currentTarget);
+    let $zz = $(event.currentTarget);
     if (response.errors) {
       $('.comment-errors').html('');
       for (let field in response.errors) {
@@ -17,8 +17,9 @@ $(function () {
       let $el = $('<li></li>');
       $el.text(response.nick + ':' + response.text);
       $el.appendTo($("#commnets-list"));
-      $form.find('[name="comment[text]"]').val('');
-      $form.find('[name="comment[nick]"]').val(response.nick);
+      $zz.find('[name="comment[text]"]').val('');
+      $zz.find('[name="comment[nick]"]').val(response.nick);
+      window.location.href = window.location.href;
     }
   })
 
