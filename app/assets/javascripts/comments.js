@@ -10,7 +10,7 @@ $(function () {
           msg += response.errors[field][i];
         }
         $el.text(msg);
-        $el.appendTo($('.comment-errors'))
+        $el.appendTo($('.comment-errors'));
       }
     } else {
       let $el = $('<li></li>');
