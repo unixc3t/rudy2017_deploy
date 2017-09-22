@@ -3,20 +3,20 @@ $(function () {
   $('form#new_comment').on('ajax:success', function (event, response, status) {
     if (response.errors) {
       $('.comment-errors').html('');
-      for (let field in response.errors) {
-        let $el = $('<li></li>');
-        let msg = field + ":";
-        for (let i = 0; i < response.errors[field].length; i++) {
+      for (var field in response.errors) {
+        var $el = $('<li></li>');
+        var msg = field + ":";
+        for (var i = 0; i < response.errors[field].length; i++) {
           msg += response.errors[field][i];
         }
         $el.text(msg);
         $el.appendTo($('.comment-errors'));
       }
     } else {
-      let $el = $('<li></li>');
+      var $el = $('<li></li>');
       $el.text(response.nick + ':' + response.text);
       $el.appendTo($("#commnets-list"));
-      let zz = $(event.currentTarget);
+      var zz = $(event.currentTarget);
       zz.find('[name="comment[text]"]').val('');
       zz.find('[name="comment[nick]"]').val(response.nick);
       window.location.href = window.location.href;
@@ -24,26 +24,26 @@ $(function () {
   })
 
   /*  $('form#new_comment').submit(function (event) {
-      let $form = $(event.currentTarget);
+      var $form = $(event.currentTarget);
 
-      let url = $form.attr('action');
-      let method = $form.attr('method');
+      var url = $form.attr('action');
+      var method = $form.attr('method');
       $.ajax(url, {
         method: method,
         success: function (response) {
           if (response.errors) {
             $('.comment-errors').html('');
-            for (let field in response.errors) {
-              let $el = $('<li></li>');
-              let msg = field + ":";
-              for (let i = 0; i < response.errors[field].length; i++) {
+            for (var field in response.errors) {
+              var $el = $('<li></li>');
+              var msg = field + ":";
+              for (var i = 0; i < response.errors[field].length; i++) {
                 msg += response.errors[field][i];
               }
               $el.text(msg);
               $el.appendTo($('.comment-errors'))
             }
           } else {
-            let $el = $('<li></li>');
+            var $el = $('<li></li>');
             $el.text(response.nick + ':' + response.text);
             $el.appendTo($("#commnets-list"));
             $form.find('[name="comment[text]"]').val('');
