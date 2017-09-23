@@ -19,7 +19,6 @@ $(function () {
       var zz = $(event.currentTarget);
       zz.find('[name="comment[text]"]').val('');
       zz.find('[name="comment[nick]"]').val(response.nick);
-      window.location.href = window.location.href;
     }
   })
 

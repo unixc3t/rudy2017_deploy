@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require rails-ujs
-//= require turbolinks
+// require turbolinks
 // require tt/abc
 // require_directory .
 //= require products

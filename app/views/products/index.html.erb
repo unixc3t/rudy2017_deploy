@@ -1,12 +1,21 @@
 <ul id="commnets-list">
   <% @products.each do |product| %>
-    <li>
-      <%= link_to product.name, product_path(id: product.id) %>:
-      <%= price_format(product.price) %>
-      |
-       <%= link_to 'Delete',product_path(product), method: :delete %>
-     <!-- <a class="delete-product" href="<%=product_path(product)%>">delete</a>-->
-    </li>
+      <li>
+        <%= link_to product.name, product_path(id: product.id) %>:
+        <%= price_format(product.price) %>
+        |
+        <%= link_to 'Delete', product_path(product), method: :delete %>
+        <!-- <a class="delete-product" href="<%= product_path(product) %>">delete</a>-->
+      </li>
   <% end %>
 </ul>
+
+<%= link_to('PREV', products_path(page: @page - 1)) if @page > 1 %>
+
+<% (@x..@y).each do |i| %>
+    <%= link_to("#{i}", products_path(page: i))  %>
+<% end %>
+<%= link_to('NEXT', products_path(page: @page + 1)) unless Product.count <= (@per_page * @page) %>
+<br>
+
 <%= link_to 'New', new_product_path %>
