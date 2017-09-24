@@ -1,5 +1,3 @@
-require 'active_support/all'
-a = 1
-
-b = a.present? || 2
-p b
+3.downto(1) do |x|
+  p x
+end

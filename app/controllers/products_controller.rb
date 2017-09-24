@@ -1,22 +1,10 @@
 class ProductsController < ApplicationController
   def index
-    @per_page = params[:per_page].present? ? params[:per_page].to_i : 2
+    @per_page = params[:per_page].present? ? params[:per_page].to_i : 3
     @page = params[:page].present? ? params[:page].to_i : 1
 
-    @per = 5
-    if @page - @per < 0
-      @x = 1
-      @y = 10
-    end
 
-    temp = @page - @per
-    if temp >= 0
-      @x = @page - 5
-      @y = @page + 4
-    end
-    @y = Product.count / @per_page.ceil if @y > Product.count / @per_page.ceil
-
-    @products = Product.limit(@per_page).offset(@per_page * (@page - 1))
+    @products = Product.page(@page).per(@per_page)
   end
 
   def show
