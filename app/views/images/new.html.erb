@@ -1,0 +1,6 @@
+<h4>New image</h4>
+
+<%= form_for [@product, @image]  do |f| %>
+    <%= f.file_field :file %>
+    <%= f.submit 'Add Image' %>
+<% end %>

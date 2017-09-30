@@ -13,10 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require rails-ujs
+//= require bootstrap
 // require turbolinks
 // require tt/abc
 // require_directory .
 //= require products
 //= require comments
+//= require users
 
 

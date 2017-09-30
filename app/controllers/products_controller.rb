@@ -1,37 +1,49 @@
 class ProductsController < ApplicationController
+  before_action :set_product, only: [:edit, :show, :update, :destroy]
+
   def index
     @per_page = params[:per_page].present? ? params[:per_page].to_i : 3
     @page = params[:page].present? ? params[:page].to_i : 1
 
 
-    @products = Product.page(@page).per(@per_page)
+    @products = Product.page(@page).per(@per_page).order('created_at DESC')
   end
 
   def show
-    @product = Product.find(params[:id])
   end
 
   def new
     @product = Product.new
   end
 
+  def edit
+  end
+
+  def update
+    @product.update(product_params)
+    redirect_to @product
+  end
+
   def create
-    @product = Product.new
-    @product.name = params[:product][:name]
-    @product.price = params[:product][:price]
-
-    @product.save
-
+    Product.create(product_params)
     redirect_to products_path
   end
 
   def destroy
-    @product = Product.find(params[:id])
     @product.destroy
     if request.xhr?
       head :no_content
     else
       redirect_to products_path
     end
+  end
+
+  private
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
+  def product_params
+    params.require(:product).permit(:name, :price)
   end
 end

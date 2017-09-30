@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_product
+  include Productable
 
   def index
     @comments = @product.comments
@@ -26,10 +26,6 @@ class CommentsController < ApplicationController
   end
 
   private
-
-  def set_product
-    @product = Product.find(params[:product_id])
-  end
 
   def set_comment
     params.require(:comment).permit(:nick, :text)

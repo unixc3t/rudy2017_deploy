@@ -1,5 +1,5 @@
 module ProductsHelper
   def price_format(value)
-    "#{value} $"
+    "#{value} ￥"
   end
 end
