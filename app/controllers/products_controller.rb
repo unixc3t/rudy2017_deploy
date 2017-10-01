@@ -20,11 +20,13 @@ class ProductsController < ApplicationController
   end
 
   def update
+    binding.pry
     @product.update(product_params)
     redirect_to @product
   end
 
   def create
+    binding.pry
     Product.create(product_params)
     redirect_to products_path
   end
@@ -44,6 +46,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :price)
+    params.require(:product).permit(:name, :price, images_attributes: [:id, :file, :_destroy])
   end
 end

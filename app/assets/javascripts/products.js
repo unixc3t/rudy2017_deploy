@@ -6,5 +6,14 @@ $(function () {
       }
     });
     return false;
+  });
+
+  $('a.remove-image').click(function(event){
+    let $target = $(event.currentTarget);
+    let $block = $target.closest('.nested-fields');
+    $block.find('._destroy').val("1");
+    $block.hide();
+    return false;
   })
+
 });

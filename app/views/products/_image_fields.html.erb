@@ -1,0 +1,10 @@
+<div class="nested-fields">
+  <span class="btn btn-default btn-file">
+    上传新图片<%= f.file_field :file %>
+</span>
+   <%=f.hidden_field :_destroy,class:'_destroy'%>
+
+  <br>
+  <%= image_tag(f.object.file_url, width: '100px') if f.object.file.present? %>
+  <a href="#" class="remove-image">删除图片</a>
+</div>
