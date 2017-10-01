@@ -20,13 +20,11 @@ class ProductsController < ApplicationController
   end
 
   def update
-    binding.pry
     @product.update(product_params)
     redirect_to @product
   end
 
   def create
-    binding.pry
     Product.create(product_params)
     redirect_to products_path
   end
