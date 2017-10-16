@@ -14,6 +14,8 @@ module Shop
       config.action_controller.permit_all_parameters = true
     end
 
+    config.active_record.observers = :comment_observer
+    config.active_job.queue_adapter= :sidekiq
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

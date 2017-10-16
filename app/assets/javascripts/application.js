@@ -12,8 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require rails-ujs
+//require rails-ujs
 //= require bootstrap
+//= require underscore
 //= require cocoon
 // require turbolinks
 // require tt/abc

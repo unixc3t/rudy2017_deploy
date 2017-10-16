@@ -6,6 +6,8 @@
 
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+
 
 </head>
 
@@ -32,6 +34,16 @@
       <%= content_tag(:div, msg, class: "alert-#{name}") %>
   <% end %>
   <%= yield %>
+
+  <input type="text" id="test">
+  <span id="test-result"></span>
+
+  <script type="text/javascript" charset="utf-8">
+    $('#test').change(event=>{
+      console.log($(event.currentTarget).val()) ;
+      return false;
+    });
+  </script>
 </div>
 </body>
 </html>

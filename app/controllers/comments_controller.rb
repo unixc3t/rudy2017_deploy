@@ -5,8 +5,16 @@ class CommentsController < ApplicationController
     @comments = @product.comments
   end
 
+
+  def destroy
+    @comment = @product.comments.find_by(id: params[:id], user: current_user)
+    @comment.destroy if @comment.present?
+    head :no_content
+  end
+
   def create
     @comment = @product.comments.build(set_comment)
+    @comment.user= current_user
     if @comment.save
       if request.xhr?
         render json: @comment
@@ -28,6 +36,6 @@ class CommentsController < ApplicationController
   private
 
   def set_comment
-    params.require(:comment).permit(:nick, :text)
+    params.require(:comment).permit(:text)
   end
 end
