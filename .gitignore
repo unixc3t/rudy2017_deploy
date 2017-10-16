@@ -24,3 +24,4 @@ tmp/*
 public/images
 public/system
 public/uploads
+Gemfile.lock
