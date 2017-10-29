@@ -6,22 +6,22 @@ $(function () {
   });
 
 
-  let channel = PusherClient.subscribe('broadcast');
+  var channel = PusherClient.subscribe('broadcast');
   channel.bind('comments.new', function (comment) {
 
-    let $comments_list = $('#comments-list');
-    let current_user_id = $comments_list.data('current_user_id');
-    let product_id = $comments_list.data('product_id');
+    var $comments_list = $('#comments-list');
+    var current_user_id = $comments_list.data('current_user_id');
+    var product_id = $comments_list.data('product_id');
     if ($comments_list.length) {
 
       if (product_id !== comment.product_id) {
         return;
       }
 
-      let el = $('<li data-comment_id="' + comment.id + '"></li>');
+      var el = $('<li data-comment_id="' + comment.id + '"></li>');
       el.text(comment.nick + ':' + comment.text);
       if (current_user_id === comment.user_id) {
-        let rm_link = $('<a class="btn btn-warning" data-remote="true" rel="nofollow" data-method="delete" href="/products/' + product_id + '/comments/' + comment.id + '">Remove</a>');
+        var rm_link = $('<a class="btn btn-warning" data-remote="true" rel="nofollow" data-method="delete" href="/products/' + product_id + '/comments/' + comment.id + '">Remove</a>');
         el.append(rm_link);
       }
 
@@ -30,8 +30,8 @@ $(function () {
   });
 
   channel.bind('comments.destroy', function (comment) {
-    let $comments_list = $('#comments-list');
-    let product_id = $comments_list.data('product_id');
+    var $comments_list = $('#comments-list');
+    var product_id = $comments_list.data('product_id');
     if ($comments_list.length) {
 
       if (product_id !== comment.product_id) {
@@ -43,11 +43,11 @@ $(function () {
   });
   /* window.WsClient = new WebSocket('ws://localhost:8080');
    WsClient.onmessage = function (response) {
-     let response_data = JSON.parse(response.data);
+     var response_data = JSON.parse(response.data);
 
-     let $comments_list = $('#comments-list');
-     let current_user_id = $comments_list.data('current_user_id');
-     let product_id = $comments_list.data('product_id');
+     var $comments_list = $('#comments-list');
+     var current_user_id = $comments_list.data('current_user_id');
+     var product_id = $comments_list.data('product_id');
      console.log(response_data.action);
 
      if ((response_data.action === 'comments.new') && $comments_list.length) {
@@ -56,10 +56,10 @@ $(function () {
          return;
        }
 
-       let el = $('<li data-comment_id="'+response_data.data.id+'"></li>');
+       var el = $('<li data-comment_id="'+response_data.data.id+'"></li>');
        el.text(response_data.data.nick + ':' + response_data.data.text);
        if (current_user_id === response_data.data.user_id) {
-         let rm_link = $('<a class="btn btn-warning" data-remote="true" rel="nofollow" data-method="delete" href="/products/' + product_id + '/comments/' + response_data.data.id + '">Remove</a>');
+         var rm_link = $('<a class="btn btn-warning" data-remote="true" rel="nofollow" data-method="delete" href="/products/' + product_id + '/comments/' + response_data.data.id + '">Remove</a>');
          el.append(rm_link);
        }
 

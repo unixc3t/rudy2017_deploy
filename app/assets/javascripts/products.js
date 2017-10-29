@@ -9,8 +9,8 @@ $(function () {
   });
 
   $('a.remove-image').click(function (event) {
-    let $target = $(event.currentTarget);
-    let $block = $target.closest('.nested-fields');
+    var $target = $(event.currentTarget);
+    var $block = $target.closest('.nested-fields');
     $block.find('._destroy').val("1");
     $block.hide();
     return false;
@@ -18,15 +18,15 @@ $(function () {
 
 
   $(".add-more-image").click(function (event) {
-    let $block = $('<div class="nested-fields"></div>');
-    let $res = $block.append($($('.nested-fields')[0]).html());
-    let datetemp=null;
-    let count = 0;
+    var $block = $('<div class="nested-fields"></div>');
+    var $res = $block.append($($('.nested-fields')[0]).html());
+    var datetemp=null;
+    var count = 0;
     _.each($res.find('input'),function (elem) {
 
-      let $elem = $(elem);
-      let old_name = $elem.attr("name");
-      let new_name =old_name.split('][');
+      var $elem = $(elem);
+      var old_name = $elem.attr("name");
+      var new_name =old_name.split('][');
       if (datetemp ===null && count !==1) {
         datetemp =Date.now();
       }
