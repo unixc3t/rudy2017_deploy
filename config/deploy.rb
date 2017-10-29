@@ -2,6 +2,7 @@
 lock '3.9.1'
 
 set :application, 'rudy2017'
+set :deploy_to, '/home/rudy/rudy2017_new_deploy'
 set :repo_url, 'https://github.com/unixc3t/rudy2017_deploy'
 
 # Default branch is :master
@@ -36,3 +37,16 @@ set :repo_url, 'https://github.com/unixc3t/rudy2017_deploy'
 # set :keep_releases, 5
 set :rvm_type, :system # or :system, depends on your rbenv setup
 set :rvm_ruby_version, '2.3.4'
+
+append :linked_files, 'config/database.yml',
+       'config/secrets.yml',
+       'db/production.sqlite3'
+
+# Default value for linked_dirs is []
+append :linked_dirs, 'log',
+       'tmp/pids',
+       'tmp/cache',
+       'tmp/sockets',
+       'public/system',
+       'public/images',
+       'public/uploads'
