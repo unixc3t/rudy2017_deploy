@@ -12,6 +12,7 @@ gem 'rails', '~> 5.1.4'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
+gem 'sqlite3'
 
 gem 'bootstrap-kaminari-views'
 gem 'carrierwave'
@@ -37,7 +38,6 @@ gem 'sidekiq'
 
 group :development, :test do
   gem 'awesome_rails_console'
-  gem 'sqlite3'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'capybara', '~> 2.13'
   gem 'pry-nav'
