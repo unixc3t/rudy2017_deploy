@@ -11,8 +11,9 @@ gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.1.4'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-# gem 'therubyracer', platforms: :ruby
+ gem 'therubyracer', platforms: :ruby
 gem 'sqlite3'
+gem 'whenever', require: false
 
 gem 'bootstrap-kaminari-views'
 gem 'carrierwave'
