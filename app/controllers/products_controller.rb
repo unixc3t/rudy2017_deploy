@@ -1,12 +1,13 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:edit, :show, :update, :destroy]
+  before_action :incr_view, only: [:show]
 
   def index
     @per_page = params[:per_page].present? ? params[:per_page].to_i : 3
     @page = params[:page].present? ? params[:page].to_i : 1
 
 
-    @products = Product.page(@page).per(@per_page).order('created_at DESC')
+    @products = Product.page(@page).per(@per_page).order('view_count DESC')
   end
 
   def show
@@ -39,6 +40,11 @@ class ProductsController < ApplicationController
   end
 
   private
+
+  def incr_view
+    @product.view.increment
+  end
+
   def set_product
     @product = Product.find(params[:id])
   end

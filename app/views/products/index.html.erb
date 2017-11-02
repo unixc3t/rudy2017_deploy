@@ -1,16 +1,20 @@
 <ul id="commnets-list">
-  <% @products.each do |product| %>
+  <% @products.includes(:comments =>[:user]).each do |product| %>
       <li>
         <%= link_to product.name, product_path(id: product.id) %>:
         <%= price_format(product.price) %>
         |
+        (viewed: <%= product.view.value %>)
+        commented by :<% product.comments.each do |comment| %>
+            <%= comment.user.full_name %>
+        <% end %>
         <%= link_to 'Delete', product_path(product), method: :delete %>
         <!-- <a class="delete-product" href="<%= product_path(product) %>">delete</a>-->
       </li>
   <% end %>
 </ul>
 
-<%= paginate @products, :theme => 'twitter-bootstrap-3'%>
+<%= paginate @products, :theme => 'twitter-bootstrap-3' %>
 <br>
 
-<%= link_to 'New', new_product_path,class:'btn btn-primary' %>
+<%= link_to 'New', new_product_path, class: 'btn btn-primary' %>

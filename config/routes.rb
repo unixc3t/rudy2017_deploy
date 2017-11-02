@@ -14,6 +14,12 @@ Rails.application.routes.draw do
   resources :products do
     resources :comments
     resources :images
+    resources :likes, only: [] do
+      collection do
+        put :like
+        put :unlike
+      end
+    end
   end
 
 end

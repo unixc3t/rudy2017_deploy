@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'cocoon'
+gem 'rake'
 #gem 'pg'
 gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.1.4'
@@ -26,6 +27,7 @@ gem 'mini_magick'
 gem 'paperclip'
 gem 'turbolinks', '~> 5'
 gem 'redis','4.0.1'
+gem 'redis-objects'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
@@ -39,6 +41,7 @@ gem 'sidekiq'
 
 group :development, :test do
   gem 'awesome_rails_console'
+  gem 'awesome_print'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'capybara', '~> 2.13'
   gem 'pry-nav'
@@ -46,9 +49,13 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'selenium-webdriver'
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
 end
 
 group :development do
+  gem 'bullet'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
