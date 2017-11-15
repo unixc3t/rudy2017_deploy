@@ -16,6 +16,7 @@ module Shop
 
     config.active_record.observers = :comment_observer
     config.active_job.queue_adapter = :sidekiq
+    config.autoload_paths += %W(#{config.root}/app/policies)
 
     config.generators do |g|
       g.test_framework :rspec,
@@ -25,8 +26,9 @@ module Shop
                        routing_specs: false,
                        controller_specs: false,
                        request_specs: false
-      g.fixture_replacement :factory_bot_rails, dir: 'spec/factories'
+      g.fixture_replacement :factory_bot, dir: 'spec/factories'
     end
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

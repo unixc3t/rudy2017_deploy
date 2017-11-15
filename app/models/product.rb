@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
   include Redis::Objects
-
+  include Likable
   serialize :like, Array
 
   has_many :comments, dependent: :destroy
@@ -12,30 +12,6 @@ class Product < ApplicationRecord
 
   counter :view
 
-=begin
-  def likes
-    like.present? ? JSON.parse(like) : []
-  end
-=end
-
-
-  def add_like(liker)
-    like << liker.id
-  end
-
-  def add_like!(liker)
-    add_like(liker)
-    save
-  end
-
-  def unlike!(liker)
-    unlike(liker)
-    save
-  end
-
-  def unlike(liker)
-    like.delete(liker.id)
-  end
 
   def nested(attributes)
     attributes['file'].blank?

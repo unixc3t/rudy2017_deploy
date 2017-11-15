@@ -28,6 +28,7 @@ gem 'paperclip'
 gem 'turbolinks', '~> 5'
 gem 'redis','4.0.1'
 gem 'redis-objects'
+gem 'rest-client'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
@@ -38,6 +39,14 @@ gem 'bunny'
 gem 'pusher'
 gem 'rails-observers'
 gem 'sidekiq'
+gem 'rabl'
+gem 'haml-rails'
+gem 'active_model_serializers'
+gem 'pundit'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-github'
+
 
 group :development, :test do
   gem 'awesome_rails_console'
@@ -49,9 +58,11 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'selenium-webdriver'
-  gem 'rspec'
+  gem 'rspec','3.7'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'shoulda-matchers'
+  gem 'ffaker'
 end
 
 group :development do
@@ -68,3 +79,5 @@ group :development do
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+
+gem 'activeadmin', github: 'activeadmin'

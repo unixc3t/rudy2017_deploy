@@ -1,16 +1,15 @@
 <ul id="comments-list" data-product_id="<%= @product.id %>" data-current_user_id="<%= current_user.id %>">
   <% @comments.each do |comment| %>
-      <li data-comment_id="<%= comment.id%>">
+      <li data-comment_id="<%= comment.id %>">
         <%= comment.user.present? ? comment.user.full_name : 'guest' %>:
         <%= comment.text %>
 
-        <% if comment.user.present? && comment.user == current_user %>
+        <% if true || policy(comment).destroy? %>
 
             <%= link_to 'Remove',
                         product_comment_path(@product, comment),
                         class: 'btn btn-warning',
-                        method: :delete,
-                        remote: true %>
+                        method: :delete %>
         <% end %>
       </li>
   <% end %>

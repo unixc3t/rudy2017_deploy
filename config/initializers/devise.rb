@@ -59,6 +59,7 @@ Devise.setup do |config|
   # enable it only for database (email + password) authentication.
   # config.params_authenticatable = true
 
+
   # Tell if authentication through HTTP Auth is enabled. False by default.
   # It can be set to an array that will enable http authentication only for the
   # given strategies, for example, `config.http_authenticatable = [:database]` will
@@ -140,6 +141,9 @@ Devise.setup do |config|
 
   # Defines which key will be used when confirming an account
   # config.confirmation_keys = [:email]
+
+  config.omniauth :facebook, '739505146242283', 'f540d2ad15d1ffbfb4f1c1fcfc289961'
+  config.omniauth :github, 'c2677da355fface93846', 'fd0f720d4110e73422fa816fcec35793d8c9893f'
 
   # ==> Configuration for :rememberable
   # The time the user will be remembered without asking for credentials again.

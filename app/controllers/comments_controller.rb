@@ -8,8 +8,9 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = @product.comments.find_by(id: params[:id], user: current_user)
-    @comment.destroy if @comment.present?
-    head :no_content
+    authorize @comment
+    @comment.destroy
+    redirect_to product_comments_path(@product)
   end
 
   def create

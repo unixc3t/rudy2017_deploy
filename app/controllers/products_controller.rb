@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  skip_before_action :authenticate_user!, raise: false, only: [:index]
   before_action :set_product, only: [:edit, :show, :update, :destroy]
   before_action :incr_view, only: [:show]
 
@@ -8,7 +9,14 @@ class ProductsController < ApplicationController
 
 
     @products = Product.page(@page).per(@per_page).order('view_count DESC')
+    respond_to do |format|
+      format.html
+      format.json {
+        render json: @products
+      }
+    end
   end
+
 
   def show
   end
@@ -31,11 +39,13 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product.destroy
-    if request.xhr?
-      head :no_content
-    else
-      redirect_to products_path
+    if @product.user =current_user
+      @product.destroy
+      if request.xhr?
+        head :no_content
+      else
+        redirect_to products_path
+      end
     end
   end
 
@@ -52,4 +62,5 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:name, :price, images_attributes: [:id, :file, :_destroy])
   end
+
 end

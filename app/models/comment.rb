@@ -7,6 +7,7 @@ class Comment < ApplicationRecord
 
   #after_commit :notify!
 
+=begin
   def as_json(_ = nil)
     {
       id: id,
@@ -16,6 +17,7 @@ class Comment < ApplicationRecord
       nick: full_name || 'Guest'
     }
   end
+=end
 
   private
 
