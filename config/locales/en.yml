@@ -31,3 +31,8 @@
 
 en:
   hello: "Hello world"
+  app_name: "shop %{version}"
+  activerecord:
+    attributes:
+      user:
+       name: '名字'

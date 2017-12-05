@@ -1,3 +1,9 @@
+
+<%= search_form_for @q, as: :log_search  do |f| %>
+    <%= f.search_field :name_cont %>
+    <%= f.submit 'search' %>
+<% end %>
+<br>
 <ul id="commnets-list">
   <% @products.includes(:comments => [:user]).each do |product| %>
       <li>
@@ -7,8 +13,9 @@
         (viewed: <%= product.view.value %>)
         commented by :
         <% product.comments.each do |comment| %>
-            <%= comment.user.full_name %>
+            <%= comment.user&.full_name %>
         <% end %>
+        <% if current_user %>
         <span class="product-like">
         <% if product.liked?(current_user.id) %>
             <%= link_to unlike_product_likes_path(product), method: :put, remote: true do %>
@@ -21,8 +28,9 @@
             <% end %>
         <% end %>
         </span>
-        <%= link_to 'Delete', product_path(product), method: :delete %>
-        <!-- <a class="delete-product" href="<%= product_path(product) %>">delete</a>-->
+            <%= link_to 'Delete', product_path(product), method: :delete %>
+            <!-- <a class="delete-product" href="<%= product_path(product) %>">delete</a>-->
+        <% end %>
       </li>
   <% end %>
 </ul>

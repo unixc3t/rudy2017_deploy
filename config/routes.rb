@@ -2,6 +2,9 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
 
+  root 'home#index'
+  mount MobileApi => '/api'
+  mount GrapeSwaggerRails::Engine => '/swagger'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   #get '/users/auth/:provider/callback', to: 'sessions#create'
@@ -9,7 +12,7 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => '/sidekiq'
   devise_for :users
 
-  namespace 'api' do
+  namespace :api, defaults: { format: :json } do
     resources :products
   end
 

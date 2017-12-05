@@ -29,6 +29,8 @@ module Shop
       g.fixture_replacement :factory_bot, dir: 'spec/factories'
     end
 
+    config.paths.add File.join('app', 'mobile_api'), glob: File.join('**', '*.rb')
+    config.autoload_paths += Dir[Rails.root.join('app', 'mobile_api', '*')]
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

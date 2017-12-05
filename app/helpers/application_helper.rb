@@ -25,6 +25,22 @@ module ApplicationHelper
 
     result << link_to('NEXT', send(method_path, page: current_page + 1)) unless total_count <= (per_page * current_page)
 
-   raw result
+    raw result
+  end
+
+  def next_locale
+    case I18n.locale
+      when :en
+        { name: '中文', key: :cn }
+      when :zh
+        { name: 'English', key: :en }
+      else
+        { name: 'English', key: :en }
+    end
+
+  end
+
+  def current_path(options)
+    url_for(request.params.merge(options))
   end
 end

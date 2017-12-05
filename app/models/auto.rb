@@ -1,0 +1,2 @@
+class Auto < Product
+end

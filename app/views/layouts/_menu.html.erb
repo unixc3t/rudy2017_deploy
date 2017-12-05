@@ -8,6 +8,9 @@
   </ul>
   <ul class="nav navbar-nav navbar-right">
     <% if user_signed_in? %>
+      <li>
+        <%= link_to next_locale[:name],url_for(lang: next_locale&.[](:key)) %>
+      </li>
         <li>
           <%= link_to me_users_path do %>
               <%= image_tag current_user.avatar.url(:thumb), size: '25x25' %>

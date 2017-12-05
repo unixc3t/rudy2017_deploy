@@ -6,8 +6,8 @@ git_source(:github) do |repo_name|
 end
 
 gem 'cocoon'
-gem 'rake'
 #gem 'pg'
+gem 'rake', '12.3.0'
 gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.1.4'
 gem 'sass-rails', '~> 5.0'
@@ -29,6 +29,7 @@ gem 'turbolinks', '~> 5'
 gem 'redis','4.0.1'
 gem 'redis-objects'
 gem 'rest-client'
+gem 'ransack'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
@@ -46,13 +47,14 @@ gem 'pundit'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-github'
-
+gem 'grape-swagger'
+gem 'grape-swagger-rails'
 
 group :development, :test do
   gem 'awesome_rails_console'
   gem 'awesome_print'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'capybara', '~> 2.13'
+  gem 'capybara'
   gem 'pry-nav'
   gem 'pry-rails'
   gem 'better_errors'
@@ -60,12 +62,14 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'rspec','3.7'
   gem 'rspec-rails'
+  gem 'capybara-webkit'
   gem 'factory_bot_rails'
   gem 'shoulda-matchers'
   gem 'ffaker'
 end
 
 group :development do
+  gem 'letter_opener'
   gem 'bullet'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
@@ -81,3 +85,7 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'activeadmin', github: 'activeadmin'
+gem 'grape'
+gem 'figaro'
+gem 'grape-entity'
+
